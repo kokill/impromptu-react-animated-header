@@ -12,5 +12,9 @@ module.exports = {
   output: {
     filename: 'main.js',
     libraryTarget: 'commonjs2'
+  },
+  externals : {
+    react: 'react',
+    'react-dom': 'react-dom'
   }
 }

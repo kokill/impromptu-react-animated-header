@@ -2,7 +2,7 @@ var React      = require('react');
 var ReactDOM = require('react-dom');
 var tweenState = require('react-tween-state');
 if (typeof(window) === 'undefined') {
-    const window = {};
+    global.window = {};
 }
 var Item = React.createClass({
     render: function() { return null; }
@@ -88,7 +88,7 @@ var TopMenu = React.createClass({
             buttonStyle = {float: 'left'};
         }
         var brand = <span />;
-        var items = (this.props.children || []).map(item => {
+        var items = (this.props.children || []).map((item, index) => {
             if (item.type === Item) {
                 var onClick = () => {
                     if ('function' === typeof item.props.onClick)
@@ -97,13 +97,13 @@ var TopMenu = React.createClass({
                         this.toggleExpanded();
                 };
                 return (
-                    <li onClick={onClick.bind(this)}>
+                    <li key={index} onClick={onClick.bind(this)}>
                         {item.props.children}
                     </li>
                 );
             } else if (item.type === Brand) {
                 brand = (
-                    <span style={brandStyle} className={'nav-logo ' + (true === this.state.wide ? 'nav-logo-full' : 'nav-logo-compact')}>
+                    <span key={index} style={brandStyle} className={'nav-logo ' + (true === this.state.wide ? 'nav-logo-full' : 'nav-logo-compact')}>
                         {item.props.children}
                     </span>
                 );
