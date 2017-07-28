@@ -111,7 +111,7 @@ header {
 }
 
 .nav-collapse.nav-compact ul li a {
-    line-height: 100%;
+    line-height: 22px;
     height: 45px;
     border-top: none;
     border-bottom: 1px solid #b4b4b4;
@@ -173,7 +173,7 @@ header.nav-transitions .nav-logo.nav-logo-full {
 header.nav-transitions.fixed .nav-collapse.nav-full ul li a {
     padding-top: .8em;
     padding-bottom: .8em;
-    line-height: 57px;
+    line-height: 70px;
     height: 92px;
 }
 

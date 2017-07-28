@@ -69,7 +69,7 @@ var TopMenu = createClass({
     },
     handleScroll: function(e) {
         var scrolled = this.state.scrolled,
-            newScrolled = window.pageYOffset > 1;
+            newScrolled = window.pageYOffset > 10;
         if (scrolled != newScrolled)
             this.setState({scrolled: newScrolled});
     },
