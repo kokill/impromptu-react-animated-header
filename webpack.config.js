@@ -15,6 +15,7 @@ module.exports = {
   },
   externals : {
     react: 'react',
-    'react-dom': 'react-dom'
+    'react-dom': 'react-dom',
+    'create-react-class': 'create-react-class'
   }
 }

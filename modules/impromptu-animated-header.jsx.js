@@ -1,18 +1,19 @@
 var React      = require('react');
 var ReactDOM = require('react-dom');
+var createClass = require('create-react-class');
 var tweenState = require('react-tween-state');
 if (typeof(window) === 'undefined') {
     global.window = {};
 }
-var Item = React.createClass({
+var Item = createClass({
     render: function() { return null; }
 });
 
-var Brand = React.createClass({
+var Brand = createClass({
     render: function() { return null; }
 });
 
-var TopMenu = React.createClass({
+var TopMenu = createClass({
     mixins: [tweenState.Mixin],
     getDefaultProps: function() {
         return {
