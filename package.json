@@ -2,17 +2,13 @@
   "name": "impromptu-react-animated-header",
   "version": "0.2.1",
   "description": "Responsive nav header component for React.",
-  "main": "modules/impromptu-animated-header.jsx.js",
+  "main": "main.js",
   "dependencies": {
-    "react-tween-state": ">=0.1.3"
+    "react-tween-state": "^0.1.5",
+    "react": "^0.14.9",
+    "react-dom": "^0.14.9"
   },
-  "peerDependencies": {
-    "react": ">=0.13.0",
-    "reactify": ">=1.1.1"
-  },
-  "browserify": {
-    "transform": ["reactify"]
-  },
+  "peerDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -31,5 +27,12 @@
   "license": "BSD",
   "bugs": {
     "url": "https://github.com/johanneshilden/impromptu-react-animated-header/issues"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^3.4.1"
   }
 }

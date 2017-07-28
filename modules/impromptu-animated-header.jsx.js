@@ -1,6 +1,9 @@
 var React      = require('react');
+var ReactDOM = require('react-dom');
 var tweenState = require('react-tween-state');
-
+if (typeof(window) === 'undefined') {
+    const window = {};
+}
 var Item = React.createClass({
     render: function() { return null; }
 });
@@ -33,7 +36,7 @@ var TopMenu = React.createClass({
     },
     toggleExpanded: function() {
         var expanded = !this.state.expanded,
-            height = this.refs.anchor.getDOMNode().clientHeight;
+            height = ReactDOM.findDOMNode(this.refs.anchor).clientHeight;
         if (true === this.props.animate) {
             this.setState({expanded: expanded});
             this.tweenState('maskHeight', {
@@ -85,30 +88,29 @@ var TopMenu = React.createClass({
             buttonStyle = {float: 'left'};
         }
         var brand = <span />;
-        var items = 
-            React.Children.map(this.props.children, function(item) {
-                if (item.type === Item) {
-                    var onClick = function() {
-                        if ('function' === typeof item.props.onClick)
-                            item.props.onClick();
-                        if (true === this.props.autoClose)
-                            this.toggleExpanded();
-                    };
-                    return (
-                        <li onClick={onClick.bind(this)}>
-                            {item.props.children}
-                        </li>
-                    );
-                } else if (item.type === Brand) {
-                    brand = (
-                        <span style={brandStyle} className={'nav-logo ' + (true === this.state.wide ? 'nav-logo-full' : 'nav-logo-compact')}>
-                            {item.props.children}
-                        </span>
-                    );
-                } else {
-                    return item;
-                }
-            }.bind(this));
+        var items = (this.props.children || []).map(item => {
+            if (item.type === Item) {
+                var onClick = () => {
+                    if ('function' === typeof item.props.onClick)
+                        item.props.onClick();
+                    if (true === this.props.autoClose)
+                        this.toggleExpanded();
+                };
+                return (
+                    <li onClick={onClick.bind(this)}>
+                        {item.props.children}
+                    </li>
+                );
+            } else if (item.type === Brand) {
+                brand = (
+                    <span style={brandStyle} className={'nav-logo ' + (true === this.state.wide ? 'nav-logo-full' : 'nav-logo-compact')}>
+                        {item.props.children}
+                    </span>
+                );
+            } else {
+                return item;
+            }
+        });
         var animClass = (true === this.props.cssTransitions) ? 'nav-transitions' : '';
         if (true === this.state.wide) {
             var cssClass = this.state.scrolled ? 'sticky' : 'fixed';
