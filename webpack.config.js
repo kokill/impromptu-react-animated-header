@@ -10,6 +10,7 @@ module.exports = {
     ]
   },
   output: {
-    filename: 'main.js'
+    filename: 'main.js',
+    libraryTarget: 'commonjs2'
   }
 }
