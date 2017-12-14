@@ -1,6 +1,6 @@
 {
   "name": "impromptu-react-animated-header",
-  "version": "0.2.2",
+  "version": "0.2.1",
   "description": "Responsive nav header component for React.",
   "main": "main.js",
   "dependencies": {
