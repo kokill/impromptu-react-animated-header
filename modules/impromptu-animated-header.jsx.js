@@ -116,7 +116,7 @@ var TopMenu = createClass({
         if (true === this.state.wide) {
             var cssClass = this.state.scrolled ? 'sticky' : 'fixed';
             return (
-                <header className={animClass ? (cssClass + ' ' + animClass) : cssClass}>
+                <header style={this.props.style} className={animClass ? (cssClass + ' ' + animClass) : cssClass}>
                     {brand}
                     <nav className={'nav-collapse nav-full' + ('right' === this.props.align ? ' nav-right' : '')}>
                         <ul ref="anchor">
@@ -127,7 +127,7 @@ var TopMenu = createClass({
             );
         } else {
             return (
-                <header className={animClass}>
+                <header style={this.props.style} className={animClass}>
                     {brand}
                     <a style={buttonStyle} href="javascript:" onClick={this.toggleExpanded} className={'nav-toggle' + (this.state.expanded ? ' active' : '')}>Menu</a>
                     <nav className="nav-collapse nav-compact">
